@@ -7,10 +7,7 @@ end
 return require('packer').startup(function(use)
     -- make sure to add this line to let packer manage itself
     use 'wbthomason/packer.nvim'
-    use {
-  	'nvim-lualine/lualine.nvim',
-  	requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	}
+    use'feline-nvim/feline.nvim'
     use {
   "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
@@ -21,13 +18,14 @@ return require('packer').startup(function(use)
     },
       -- Unless you are still migrating, remove the deprecated commands from v1.x
 }
-
+    use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
     -- using packer.nvim
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
+    use { "nvim-telescope/telescope-file-browser.nvim" }
     -- If you are using Packer
     use 'marko-cerovac/material.nvim'
     -- If you are using Packer
@@ -37,6 +35,8 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-nvim-lsp'
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip' -- Snippets plugin
+    use 'onsails/lspkind-nvim'
+    use 'lukas-reineke/indent-blankline.nvim'
     use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 

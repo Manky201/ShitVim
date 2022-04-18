@@ -67,11 +67,43 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
-
+}
   
 -- Enable the following language servers
-  lspconfig['clangd'].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+lspconfig['clangd'].setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+lspconfig['pyright'].setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+	settings = {
+        python = {
+             analysis = {
+             autoSearchPaths = true,
+             useLibraryCodeForTypes = true
+      }
+    }
   }
 }
+local lspkind = require('lspkind')
+cmp.setup {
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol', -- show only symbol annotations
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+
+      -- The function below will be called before any actual modifications from lspkind
+      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30)
+    })
+  }
+}
+
+require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    show_current_context = true,
+    show_current_context_start = true,
+}
+
+

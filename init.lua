@@ -1,9 +1,10 @@
 require('plugins')
 require('vimopt')
+require('felin')
 require('tree')
-require('lualine').setup{
-	theme = nord	
-}
+require('flutter-tools').setup{}
+-- require('windline')
+-- require('wlsample.bubble2')
 require('treesitter')
 require('lspconfig-nvim')
 require('telescopt-lol')
